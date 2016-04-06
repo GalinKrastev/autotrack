@@ -3,6 +3,17 @@
 <head>
   <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+
+    ga('create', 'UA-12345-1', 'auto');
+
+    ga('require', 'eventTracker', {
+      attributePrefix: 'ga-',
+      fieldsObj: {
+        nonInteraction: true
+      }
+    });
+
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   <script aysnc src="/autotrack.js"></script>
@@ -11,36 +22,61 @@
 
   <button
     id="event-button"
-    data-event-category="foo"
-    data-event-action="bar"
-    data-event-label="qux"
-    data-event-value="42">
+    ga-on="click"
+    ga-dimension-1="omg!"
+    ga-event-category="foo"
+    ga-event-action="bar"
+    ga-event-label="qux"
+    ga-event-value="42"
+    ga-non-interaction="true">
     Click
   </button>
 
   <button
     id="event-button-some-fields"
-    data-event-category="foo"
-    data-event-action="bar"
-    data-event-label="qux">
+    ga-on="click"
+    ga-event-category="foo"
+    ga-event-action="bar"
+    ga-event-label="qux">
     Click
   </button>
 
   <button
     id="event-button-missing-fields"
-    data-event-label="qux"
-    data-event-value="42">
+    ga-on="click"
+    ga-event-label="qux"
+    ga-event-value="42">
     Click
   </button>
 
   <button
     id="event-button-custom-prefix"
-    event-category="foo"
-    event-action="bar"
-    event-label="qux"
-    event-value="42">
+    ga-on="click"
+    ga-event-category="foo"
+    ga-event-action="bar"
+    ga-event-label="qux"
+    ga-event-value="42">
     Click
   </button>
+
+  <button
+    id="social-button"
+    ga-on="click"
+    ga-hit-type="social"
+    ga-social-network="Facebook"
+    ga-social-action="like"
+    ga-social-target="me"
+    ga-page="/foobar.html">
+    Click
+  </button>
+
+  <form
+    ga-on="focus"
+    ga-event-category="Forms"
+    ga-event-action="focus">
+    <input type="text" value="foobar">
+    <button>Submit</button>
+  </form>
 
 </body>
 </html>
